@@ -17,7 +17,7 @@ if __name__ == '__main__':
 
     logger = Log4j(spark)
 
-    logger.warn("Created Spark Session")
+    logger.info("Created Spark Session")
 
     taxi_jan_22 = datareader_fnc.data_reader_jan(spark,job_run_env)
 
