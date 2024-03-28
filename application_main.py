@@ -1,6 +1,7 @@
 import sys
 from lib import utilities,datareader_fnc,datamanupilication_fnc
 from pyspark.sql.functions import *
+from lib.logger import Log4j
 
 
 if __name__ == '__main__':
@@ -14,7 +15,9 @@ if __name__ == '__main__':
 
     spark = utilities.createspark_session(job_run_env)
 
-    print("created spark session")
+    logger = Log4j(spark)
+
+    logger.warn("Created Spark Session")
 
     taxi_jan_22 = datareader_fnc.data_reader_jan(spark,job_run_env)
 
@@ -30,4 +33,4 @@ if __name__ == '__main__':
 
     farecollected.show(20)
 
-    print("END OF MAIN")
+    logger.info("this is the end of main")
